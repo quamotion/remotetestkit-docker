@@ -24,13 +24,5 @@ RUN choco install \
 
 && rmdir /S /Q C:\chococache
 
-# Main service port
-EXPOSE 10048
-
-# Device service port
-EXPOSE 10049
-
-# ADB port
-Expose 5037
-
-CMD [ "C:\\Program Files (x86)\\Remote TestKit\\ThriftApiServer.exe" ]
+COPY run.cmd .
+CMD [ "run.cmd" ]
