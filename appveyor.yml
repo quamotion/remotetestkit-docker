@@ -1,0 +1,33 @@
+
+image: Visual Studio 2017
+
+
+environment:
+
+  DOCKER_USER:
+
+    secure: QxwBYboOc1rMQNoOLEv64A==
+
+  DOCKER_PASS:
+
+    secure: ZKnFpodvc0MFIkqR7m4ojA==
+
+
+install:
+
+  - docker version
+
+
+
+build_script:
+
+  - docker build -t quamotion/remotetestkit:7.2.1.1 .
+
+
+
+
+deploy_script:
+
+  - docker login -u="$env:DOCKER_USER" -p="$env:DOCKER_PASS"
+
+  - docker push quamotion/remotetestkit:7.2.1.1
