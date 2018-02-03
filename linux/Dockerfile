@@ -2,7 +2,6 @@ FROM ubuntu:xenial
 
 RUN apt-get update \
 && apt-get install -y wget p7zip-full innoextract unzip \
-# Delete all the apt list files since they're big and get stale quickly
 && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /src/adb
@@ -37,6 +36,9 @@ EXPOSE 5037
 # Expose the RTK Main and Device service
 EXPOSE 10048
 EXPOSE 10049
+
+# Set the CLASSPATH variable
+ENV CLASSPATH="/app:/app/monte.jar"
 
 # Start the server by default
 CMD ["/bin/bash", "-c", "/app/run.sh"]
