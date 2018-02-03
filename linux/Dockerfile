@@ -21,9 +21,10 @@ FROM ubuntu:xenial
 
 WORKDIR /
 
-# Install Java
+# Install Java and FFmpeg. FFmpeg is used to transcode videos created by Thrift; they can become
+# very large and we ues FFmpeg to reduce their size.
 RUN apt-get update \
-&& apt-get install -y openjdk-8-jre \
+&& apt-get install -y openjdk-8-jre ffmpeg \
 && rm -rf /var/lib/apt/lists/*
 
 COPY run.sh /app/run.sh
