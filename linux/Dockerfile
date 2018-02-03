@@ -15,7 +15,8 @@ WORKDIR /src/rtk
 
 RUN wget https://appkitbox.com/testkit/wp-content/download/remotetestkit-en.exe -O remotetestkit-en.exe \
 && innoextract remotetestkit-en.exe \
-&& 7z x app/ThriftApiServer.exe -o/src/rtk/thrift
+&& 7z x app/ThriftApiServer.exe -o/src/rtk/thrift \
+&& cp app/lib/*.jar /src/rtk/thrift/
 
 FROM ubuntu:xenial
 
